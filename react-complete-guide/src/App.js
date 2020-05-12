@@ -68,11 +68,23 @@ class App extends Component {
   }
 
   render() {
+
+    const style = {
+      backgroundColor: 'black',
+      font: 'inherit',
+      border: 'none',
+      borderRadius: '4px',
+      color: 'white',
+      padding: '10px' ,
+      cursor: 'pointer'
+    }
+
     return (
       <div className="App">
         <h1>Hi, I'm a React App!!</h1>
         <p>This is really working.</p>
         <button 
+          style={style}
           // Second method of passing argument
           onClick={() => this.switchNameHandler('Meenakshi')} 
         >Switch Names</button>
