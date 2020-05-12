@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
 
-const App = props => {
+class App extends Component {
 
-  const [ personState, setPersonState ] = useState({
+  state = {
     person: [
       {
         name: 'Niharika',
@@ -18,19 +18,16 @@ const App = props => {
         name: 'Prateeti',
         age: 23
       }
-    ]
-  });
+    ],
+    otherState: 'some other value'
+  }
 
-  const [otherState, setOtherState] = useState('some other value')
-
-  console.log(personState, otherState)
-  
-  const switchNameHandler = () => {
+  switchNameHandler = (newName) => {
     // console.log('was clicked!!!')
     // DON'T DO THIS
     // this.state.person[0].name = 'Jhalli'
   
-    setPersonState({
+    this.setState({
       person: [
         {
           name: 'Varsha',
@@ -41,25 +38,58 @@ const App = props => {
           age: 22
         },
         {
-          name: 'Sparsh',
+          name: newName,
           age: 23
         }
-      ],
-      
+      ]
     })
   }
 
-  return (
-    <div className="App">
-      <h1>Hi, I'm a React App!!</h1>
-      <p>This is really working.</p>
-      <button onClick={switchNameHandler}>Switch Names</button>
-      <Person name={personState.person[2].name} age={personState.person[2].age}/>
-      <Person name={personState.person[1].name} age={personState.person[1].age}>My hobbies: Painting</Person>
-      <Person name={personState.person[0].name} age={personState.person[0].age}/>
-    </div>
-  );
+  nameChangeHandler = event => {
 
+    event.preventDefault()
+
+    this.setState({
+      person: [
+        {
+          name: 'Niharika',
+          age: 22
+        },
+        {
+          name: 'Nainakshi',
+          age: 22
+        },
+        {
+          name: event.target.value,
+          age: 23
+        }
+      ]
+    })
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <h1>Hi, I'm a React App!!</h1>
+        <p>This is really working.</p>
+        <button 
+          // Second method of passing argument
+          onClick={() => this.switchNameHandler('Meenakshi')} 
+        >Switch Names</button>
+        <Person name={this.state.person[2].name} age={this.state.person[2].age}/>
+        <Person 
+          name={this.state.person[1].name} 
+          age={this.state.person[1].age} 
+          // How to pass argument to method using bind() and 'this'
+          click={this.switchNameHandler.bind(this, 'MeenSn')} // passed the methods reference to the component
+          change={this.nameChangeHandler}
+        >
+          My hobbies: Painting
+        </Person>
+        <Person name={this.state.person[0].name} age={this.state.person[0].age}/>
+      </div>
+    );
+  }
   // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'));
 }
 
