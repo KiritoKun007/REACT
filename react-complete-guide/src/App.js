@@ -1,8 +1,24 @@
 import React, { Component } from 'react';
-import Radium, { StyleRoot } from 'radium';
+import styled from 'styled-components'
 import './App.css';
 import Person from './Person/Person';
 
+
+const ToggleBtn = styled.button`
+  background-color: black;
+  font: inherit;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  outline: none;
+
+  &:hover {
+    background-color: lightgray;
+    color: black;
+  }
+`
 
 class App extends Component {
 
@@ -75,22 +91,6 @@ class App extends Component {
 
   render() {
 
-    const style = {
-      backgroundColor: 'black',
-      font: 'inherit',
-      border: 'none',
-      borderRadius: '4px',
-      color: 'white',
-      padding: '10px' ,
-      cursor: 'pointer',
-      outline: 'none',
-
-      ':hover' : {
-        backgroundColor: 'lightgray',
-        color: 'black'
-      }
-    }
-
     let persons = null
 
     if(this.state.showPerson) {
@@ -116,11 +116,7 @@ class App extends Component {
           </Person> */}
         </div>
       )      
-      style.backgroundColor = 'green'
-      style[':hover'] = {
-        backgroundColor: 'lightgreen',
-        color: 'black'
-      }
+      // style.backgroundColor = 'green'
     }
 
     let classes = []
@@ -135,22 +131,19 @@ class App extends Component {
     let assignedClass = classes.join(' ')
 
     return (
-      <StyleRoot>
-        <div className="App">
-          <h1>Hi, I'm a React App!!</h1>
-          <p className={assignedClass}>This is really working.</p>
-          <button 
-            style={style}
-            onClick={this.togglePersonsHandler} 
-          >{ !this.state.showPerson ? 'Show Persons': 'Hide Persons'}</button>
-          {persons}
-        </div>
-      </StyleRoot>
+      <div className="App">
+        <h1>Hi, I'm a React App!!</h1>
+        <p className={assignedClass}>This is really working.</p>
+        <ToggleBtn
+          onClick={this.togglePersonsHandler} 
+        >{ !this.state.showPerson ? 'Show Persons': 'Hide Persons'}</ToggleBtn>
+        {persons}
+      </div>
     );
   }
   // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'));
 }
 
-export default Radium(App);
+export default App;
 
 
