@@ -80,7 +80,8 @@ class App extends Component {
       borderRadius: '4px',
       color: 'white',
       padding: '10px' ,
-      cursor: 'pointer'
+      cursor: 'pointer',
+      outline: 'none'
     }
 
     let persons = null
@@ -108,12 +109,24 @@ class App extends Component {
           </Person> */}
         </div>
       )      
+      style.backgroundColor = 'green'
     }
+
+    let classes = []
+
+    if(this.state.person.length <= 2) {
+      classes.push('red')
+    } 
+    if(this.state.person.length <= 1) {
+      classes.push('bold')
+    }
+
+    let assignedClass = classes.join(' ')
 
     return (
       <div className="App">
         <h1>Hi, I'm a React App!!</h1>
-        <p>This is really working.</p>
+        <p className={assignedClass}>This is really working.</p>
         <button 
           style={style}
           onClick={this.togglePersonsHandler} 
