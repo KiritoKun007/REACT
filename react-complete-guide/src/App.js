@@ -1,23 +1,7 @@
 import React, { Component } from 'react';
-// import styled from 'styled-components'
 import './App.scss';
 import Person from './Person/Person';
-
-// const ToggleBtn = styled.button`
-//   background-color: ${props => !props.hover ? 'black': 'green'};
-//   font: inherit;
-//   border: none;
-//   border-radius: 4px;
-//   color: white;
-//   padding: 10px;
-//   cursor: pointer;
-//   outline: none;
-
-//   &:hover {
-//     background-color: ${props => !props.hover ? 'lightgray': 'lightgreen'};
-//     color: black;
-//   }
-// `
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 class App extends Component {
 
@@ -97,13 +81,14 @@ class App extends Component {
       persons = (
         <div>
           {this.state.person.map((p, i) => {
-            return <Person 
-              click={this.deletePersonHandler.bind(this, i)}
-              name={p.name} 
-              age={p.age} 
-              key={p.id}
-              change={(event) => this.nameChangeHandler(event, p.id)}
-             />
+            return <ErrorBoundary key={p.id}> 
+              {/* Key always has to be in the outer element in a map method */}
+                <Person 
+                  click={this.deletePersonHandler.bind(this, i)}
+                  name={p.name} 
+                  age={p.age} 
+                  change={(event) => this.nameChangeHandler(event, p.id)} />
+              </ErrorBoundary> 
           })}
           {/* <Person 
             name={this.state.person[1].name} 
@@ -130,12 +115,10 @@ class App extends Component {
       classes.push('bold')
     }
 
-    let assignedClass = classes.join(' ')
-
     return (
-      <div className="App">
+      <div className='App'>
         <h1>Hi, I'm a React App!!</h1>
-        <p className={assignedClass}>This is really working.</p>
+        <p className={classes.join(' ')}>This is really working.</p>
         <button
           className={btnClass}
           //hover={this.state.showPerson}
