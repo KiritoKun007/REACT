@@ -1,24 +1,23 @@
 import React, { Component } from 'react';
-import styled from 'styled-components'
-import './App.css';
+// import styled from 'styled-components'
+import './App.scss';
 import Person from './Person/Person';
 
+// const ToggleBtn = styled.button`
+//   background-color: ${props => !props.hover ? 'black': 'green'};
+//   font: inherit;
+//   border: none;
+//   border-radius: 4px;
+//   color: white;
+//   padding: 10px;
+//   cursor: pointer;
+//   outline: none;
 
-const ToggleBtn = styled.button`
-  background-color: black;
-  font: inherit;
-  border: none;
-  border-radius: 4px;
-  color: white;
-  padding: 10px;
-  cursor: pointer;
-  outline: none;
-
-  &:hover {
-    background-color: lightgray;
-    color: black;
-  }
-`
+//   &:hover {
+//     background-color: ${props => !props.hover ? 'lightgray': 'lightgreen'};
+//     color: black;
+//   }
+// `
 
 class App extends Component {
 
@@ -92,6 +91,7 @@ class App extends Component {
   render() {
 
     let persons = null
+    let btnClass = 'button'
 
     if(this.state.showPerson) {
       persons = (
@@ -116,6 +116,8 @@ class App extends Component {
           </Person> */}
         </div>
       )      
+
+      btnClass = 'greenButton'
       // style.backgroundColor = 'green'
     }
 
@@ -134,9 +136,11 @@ class App extends Component {
       <div className="App">
         <h1>Hi, I'm a React App!!</h1>
         <p className={assignedClass}>This is really working.</p>
-        <ToggleBtn
+        <button
+          className={btnClass}
+          //hover={this.state.showPerson}
           onClick={this.togglePersonsHandler} 
-        >{ !this.state.showPerson ? 'Show Persons': 'Hide Persons'}</ToggleBtn>
+        >{ !this.state.showPerson ? 'Show Persons': 'Hide Persons'}</button>
         {persons}
       </div>
     );
