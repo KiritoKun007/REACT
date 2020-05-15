@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.scss';
-import Person from './Person/Person';
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+import Person from './Persons/Person/Person';
+// import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 class App extends Component {
 
@@ -81,15 +81,14 @@ class App extends Component {
       persons = (
         <div>
           {this.state.person.map((p, i) => {
-            return <ErrorBoundary key={p.id}> 
-              {/* Key always has to be in the outer element in a map method */}
-                <Person 
+            return <Person 
                   click={this.deletePersonHandler.bind(this, i)}
+                  key={p.id}
                   name={p.name} 
                   age={p.age} 
                   change={(event) => this.nameChangeHandler(event, p.id)} />
-              </ErrorBoundary> 
           })}
+          {/* Key always has to be in the outer element in a map method */}
           {/* <Person 
             name={this.state.person[1].name} 
             age={this.state.person[1].age} 
