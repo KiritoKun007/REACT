@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.scss';
 import Person from '../components/Persons/Person/Person';
+import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit';
 // import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 class App extends Component {
@@ -80,24 +82,12 @@ class App extends Component {
     if(this.state.showPerson) {
       persons = (
         <div>
-          {this.state.person.map((p, i) => {
-            return <Person 
-                  click={this.deletePersonHandler.bind(this, i)}
-                  key={p.id}
-                  name={p.name} 
-                  age={p.age} 
-                  change={(event) => this.nameChangeHandler(event, p.id)} />
-          })}
+          <Persons 
+            person={this.state.person}
+            clicked={this.deletePersonHandler}
+            changed={this.nameChangeHandler}
+          /> 
           {/* Key always has to be in the outer element in a map method */}
-          {/* <Person 
-            name={this.state.person[1].name} 
-            age={this.state.person[1].age} 
-            // How to pass argument to method using bind() and 'this'
-            click={this.switchNameHandler.bind(this, 'MeenSn')} // passed the methods reference to the component
-            change={this.nameChangeHandler}
-          >
-            My hobbies: Painting
-          </Person> */}
         </div>
       )      
 
@@ -116,13 +106,12 @@ class App extends Component {
 
     return (
       <div className='App'>
-        <h1>Hi, I'm a React App!!</h1>
-        <p className={classes.join(' ')}>This is really working.</p>
-        <button
-          className={btnClass}
-          //hover={this.state.showPerson}
-          onClick={this.togglePersonsHandler} 
-        >{ !this.state.showPerson ? 'Show Persons': 'Hide Persons'}</button>
+        <Cockpit 
+          redNBoldLine={classes}
+          btnClass={btnClass}
+          clicked={this.togglePersonsHandler}
+          showPerson={this.state.showPerson}
+        />
         {persons}
       </div>
     );
