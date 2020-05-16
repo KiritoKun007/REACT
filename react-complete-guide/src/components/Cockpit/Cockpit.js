@@ -1,7 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Cockpit.scss'
 
 const Cockpit = (props) => {
+
+    useEffect(() => {
+      console.log('[Cockpit.js] useEffect');
+      // Http request...
+
+      setTimeout(() => {
+        alert('Saved data to cloud!!')
+      }, 1000)
+    }, [])
 
     let classes = []
 

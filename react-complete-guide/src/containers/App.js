@@ -1,25 +1,37 @@
 import React, { Component } from 'react';
 import './App.scss';
-import Person from '../components/Persons/Person/Person';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
-// import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 class App extends Component {
 
-  constructor(props) {
-    super(props);
-    consol.log('[App.js] constructor');
+  state = {
+    person: [
+      { id: 1290, name: 'Niharika', age: 22 },
+      { id: 1926, name: 'Nainakshi', age: 22 },
+      { id: 8751, name: 'Prateeti', age: 23 }
+    ],
+    otherState: 'some other value',
+    showPerson: false
+  }
 
-    this.state = {
-      person: [
-        { id: 1290, name: 'Niharika', age: 22 },
-        { id: 1926, name: 'Nainakshi', age: 22 },
-        { id: 8751, name: 'Prateeti', age: 23 }
-      ],
-      otherState: 'some other value',
-      showPerson: false
-    }
+  static getDerivedStateFromProps(props, state) {
+    console.log('[App.js] getDerivedStateFromProps', props)
+
+    return state
+  }
+
+  // componentDidMount() {
+  //   console.log('[App.js] componentDidMount')
+  // }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('[App.js] shouldComponentUpdate');
+    return true;
+  }
+
+  componentDidUpdate() {
+      console.log('[App.js] componentDidUpdate');
   }
 
   deletePersonHandler = (personIndex) => {
@@ -65,6 +77,7 @@ class App extends Component {
 
   render() {
 
+    console.log('[App.js] render')
     let persons = null
 
     if(this.state.showPerson) {
@@ -84,6 +97,7 @@ class App extends Component {
       <div className='App'>
         <Cockpit
           title={this.props.appTitle}
+          person={this.state.person}
           personLength={this.state.person.length}
           clicked={this.togglePersonsHandler}
           showPerson={this.state.showPerson}

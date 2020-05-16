@@ -1,16 +1,21 @@
-import React from 'react'
+import React, { Component } from 'react'
 import './Person.scss'
 
-const Person = (props) => {
+class Person extends Component {
 
-    return (
-        <div className="Person">
-            <p onClick={props.click}> I'm {props.name} and I am {props.age} year old! </p>
-            <p>{props.children}</p>
-            <input type="text" onChange={props.change} defaultValue={props.name}/>
-        </div>
-    )
-    
+    render() {
+      console.log('[Person.js] rendering...!!')
+
+      const {name, age, children, click} = this.props
+
+      return (
+          <div className="Person">
+              <p onClick={click}> I'm {name} and I am {age} year old! </p>
+              <p>{children}</p>
+              <input type="text" onChange={this.props.change} defaultValue={name}/>
+          </div>
+      )
+    }
 }
 
 export default Person
