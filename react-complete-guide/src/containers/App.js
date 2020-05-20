@@ -1,24 +1,24 @@
-import React, { Component } from 'react';
-import './App.scss';
-import Persons from '../components/Persons/Persons';
-import Cockpit from '../components/Cockpit/Cockpit';
+import React, { Component } from "react";
+import "./App.scss";
+import Persons from "../components/Persons/Persons";
+import Cockpit from "../components/Cockpit/Cockpit";
 
 class App extends Component {
-
   state = {
     person: [
-      { id: 1290, name: 'Niharika', age: 22 },
-      { id: 1926, name: 'Nainakshi', age: 22 },
-      { id: 8751, name: 'Prateeti', age: 23 }
+      { id: 1290, name: "Niharika", age: 22 },
+      { id: 1926, name: "Nainakshi", age: 22 },
+      { id: 8751, name: "Prateeti", age: 23 },
     ],
-    otherState: 'some other value',
-    showPerson: false
-  }
+    otherState: "some other value",
+    showPerson: false,
+    showCockpit: true,
+  };
 
   static getDerivedStateFromProps(props, state) {
-    console.log('[App.js] getDerivedStateFromProps', props)
+    console.log("[App.js] getDerivedStateFromProps", props);
 
-    return state
+    return state;
   }
 
   // componentDidMount() {
@@ -26,61 +26,64 @@ class App extends Component {
   // }
 
   shouldComponentUpdate(nextProps, nextState) {
-    console.log('[App.js] shouldComponentUpdate');
-    return true;
+    console.log("[App.js] shouldComponentUpdate");
+
+    console.log(nextProps, this.props)
+    if(nextProps.person === this.props.person) {
+      return true
+    } else {
+      return false;
+    }
+
   }
 
   componentDidUpdate() {
-      console.log('[App.js] componentDidUpdate');
+    console.log("[App.js] componentDidUpdate");
   }
 
   deletePersonHandler = (personIndex) => {
-
-    const persons = [...this.state.person]
+    const persons = [...this.state.person];
 
     persons.splice(personIndex, 1);
 
     this.setState({
-      person: persons
-    })
-  }
+      person: persons,
+    });
+  };
 
   nameChangeHandler = (event, id) => {
-
-    const personIndex = this.state.person.findIndex(p => {
-      return p.id === id
-    })
+    const personIndex = this.state.person.findIndex((p) => {
+      return p.id === id;
+    });
 
     const person = {
-      ...this.state.person[personIndex]
-    }
+      ...this.state.person[personIndex],
+    };
 
-    person.name = event.target.value
+    person.name = event.target.value;
 
-    const persons = [...this.state.person]
+    const persons = [...this.state.person];
 
-    persons[personIndex] = person
+    persons[personIndex] = person;
 
     this.setState({
-      person: persons
-    })
-  }
+      person: persons,
+    });
+  };
 
   togglePersonsHandler = () => {
-
-    const doesShow = this.state.showPerson
+    const doesShow = this.state.showPerson;
 
     this.setState({
-      showPerson: !doesShow
-    })
-  }
+      showPerson: !doesShow,
+    });
+  };
 
   render() {
+    console.log("[App.js] render");
+    let persons = null;
 
-    console.log('[App.js] render')
-    let persons = null
-
-    if(this.state.showPerson) {
+    if (this.state.showPerson) {
       persons = (
         <div>
           <Persons
@@ -90,18 +93,26 @@ class App extends Component {
           />
           {/* Key always has to be in the outer element in a map method */}
         </div>
-      )
+      );
     }
 
     return (
-      <div className='App'>
-        <Cockpit
-          title={this.props.appTitle}
-          person={this.state.person}
-          personLength={this.state.person.length}
-          clicked={this.togglePersonsHandler}
-          showPerson={this.state.showPerson}
-        />
+      <div className="App">
+        <button
+          onClick={() => {
+            this.setState({ showCockpit: false });
+          }}
+        >
+          Remove Cockpit
+        </button>
+        {this.state.showCockpit ? (
+          <Cockpit
+            title={this.props.appTitle}
+            personLength={this.state.person.length}
+            clicked={this.togglePersonsHandler}
+            showPerson={this.state.showPerson}
+          />
+        ) : null}
         {persons}
       </div>
     );

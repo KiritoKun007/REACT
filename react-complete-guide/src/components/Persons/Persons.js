@@ -13,7 +13,13 @@ class Persons extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     console.log('[Persons.js] shouldComponentUpdate')
-    return true;
+
+    if(nextProps.person !== this.props.person) {
+      return true
+    } else {
+      return false;
+    }
+
   }
 
   getSnapshotBeforeUpdate(prevProps, prevState) {
@@ -30,20 +36,26 @@ class Persons extends Component {
     console.log(snapshot, prevProps, prevState)
   }
 
-    render () {
-      console.log('[Persons.js] rendering...!!')
+  componentWillUnmount() {
 
-      const {person, clicked, changed} = this.props
+    console.log('[Persons.js] componentWillUnmount');
+    
+  }
 
-      return person.map((p, i) => {
-          return <Person
-              click={clicked.bind(this, i)}
-              key={p.id}
-              name={p.name}
-              age={p.age}
-              change={(event) => changed(event, p.id)} />
-      })
-    }
+  render () {
+    console.log('[Persons.js] rendering...!!')
+
+    const {person, clicked, changed} = this.props
+
+    return person.map((p, i) => {
+        return <Person
+            click={clicked.bind(this, i)}
+            key={p.id}
+            name={p.name}
+            age={p.age}
+            change={(event) => changed(event, p.id)} />
+    })
+  }
 
 }
 
