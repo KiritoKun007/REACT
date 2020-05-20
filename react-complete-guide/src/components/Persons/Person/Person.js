@@ -8,13 +8,11 @@ class Person extends Component {
 
       const {name, age, children, click} = this.props
 
-      return (
-          <div className="Person">
-              <p onClick={click}> I'm {name} and I am {age} year old! </p>
-              <p>{children}</p>
-              <input type="text" onChange={this.props.change} defaultValue={name}/>
-          </div>
-      )
+      return [
+        <p key="i1" onClick={click}> I'm {name} and I am {age} year old! </p>,
+        <p key="i2">{children}</p>,
+        <input key="i3" type="text" onChange={this.props.change} defaultValue={name}/>
+      ]
     }
 }
 
