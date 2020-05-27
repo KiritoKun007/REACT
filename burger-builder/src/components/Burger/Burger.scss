@@ -1,0 +1,19 @@
+@import '../../assets/styles/mediaQueries';
+.Burger {
+    width: 60%;
+    margin: auto;
+    height: 350px;
+    overflow-y: auto;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    @include respond-to(medium-screens) {
+        width: 50%;
+    }
+    @include respond-to(wide-screens) {
+        width: 40%;
+    }
+    @include respond-to(huge-screens) {
+        width: 40%;
+    }
+}
