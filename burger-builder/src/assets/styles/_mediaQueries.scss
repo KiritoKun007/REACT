@@ -2,6 +2,7 @@ $mobile-width: 480px;
 $lr-tablet-width: 767px;
 $ipad-tablet-width: 1024px;
 $desktop-width: 1280px;
+$modal-width: 600px;
 @mixin respond-to($media) {
     @if $media==handhelds {
         @media only screen and (min-width: $mobile-width) and (max-width: $lr-tablet-width - 1) {
@@ -20,6 +21,11 @@ $desktop-width: 1280px;
     }
     @else if $media==huge-screens {
         @media only screen and (min-width: $desktop-width) {
+            @content;
+        }
+    }
+    @else if $media==modal {
+        @media only screen and (min-width: $modal-width) {
             @content;
         }
     }

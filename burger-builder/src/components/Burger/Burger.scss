@@ -1,19 +1,24 @@
 @import '../../assets/styles/mediaQueries';
 .Burger {
-    width: 60%;
+    width: 100%;
     margin: auto;
-    height: 350px;
+    height: 200px;
     overflow-y: auto;
     text-align: center;
     font-weight: bold;
     font-size: 1.2rem;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+    @include respond-to(handhelds) {
+        width: 400px;
+    }
     @include respond-to(medium-screens) {
-        width: 50%;
+        width: 400px;
     }
     @include respond-to(wide-screens) {
-        width: 40%;
+        width: 400px;
     }
     @include respond-to(huge-screens) {
-        width: 40%;
+        width: 450px;
     }
 }
