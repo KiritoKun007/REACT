@@ -1,0 +1,46 @@
+@import '../../../../assets/styles/mediaQueries';
+.NavigationItem {
+    margin: 10px 0;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 18px;
+    @include respond-to(side-drawer-mobile) {
+        margin: 0;
+        padding: 0;
+        width: auto;
+        height: 100%;
+    }
+    a {
+        color: #8f5c2c;
+        text-decoration: none;
+        width: 100%;
+        display: block;
+        box-sizing: border-box;
+        @include respond-to(side-drawer-mobile) {
+            color: white;
+            width: auto;
+            height: 100%;
+            padding: 16px 10px;
+            border-bottom: 4px solid transparent;
+        }
+        &:hover,
+        &:active {
+            color: #40a4c8;
+            @include respond-to(side-drawer-mobile) {
+                color: white;
+                background-color: #8f5c2c;
+                border-bottom-color: #40a4c8;
+            }
+        }
+    }
+    .active {
+        color: #40a4c8;
+        @include respond-to(side-drawer-mobile) {
+            color: white;
+            background-color: #8f5c2c;
+            border-bottom-color: #40a4c8;
+        }
+    }
+}

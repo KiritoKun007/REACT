@@ -29,4 +29,9 @@ $modal-width: 600px;
             @content;
         }
     }
+    @else if $media==side-drawer-mobile {
+        @media only screen and (min-width: $mobile-width) {
+            @content;
+        }
+    }
 }

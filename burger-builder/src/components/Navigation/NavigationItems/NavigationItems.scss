@@ -1,0 +1,13 @@
+@import '../../../assets/styles/mediaQueries';
+.NavigationItems {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    flex-flow: column;
+    @include respond-to(side-drawer-mobile) {
+        flex-flow: row;
+    }
+}
