@@ -1,0 +1,32 @@
+.Header {
+    background-color: #eee;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+}
+
+.Header ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.Header li {
+    padding: 20px;
+}
+
+.Header a:hover,
+.Header a.active {
+    background-color: #ddd;
+    border-color: black;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.Header a {
+    text-decoration: none;
+    color: black;
+    border-bottom: 2px solid #eee;
+}

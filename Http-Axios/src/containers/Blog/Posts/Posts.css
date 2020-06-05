@@ -1,0 +1,14 @@
+.Posts {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+    position: relative;
+    top: 5rem;
+}
+
+.Posts a {
+    text-decoration: none;
+    color: inherit;
+}
