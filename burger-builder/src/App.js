@@ -4,10 +4,11 @@ import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
 import Layout from './hoc/Layout/Layout';
 
 function App() {
+
   return (
     <div className="App">
       <Layout>
-        <BurgerBuilder />
+        <BurgerBuilder /> 
       </Layout>
     </div>
   );
