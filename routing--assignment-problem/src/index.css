@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+.Navigation-items ul {
+    list-style: none;
+    display: flex;
+}
+
+.Navigation-items li {
+    padding: 0 10px;
+}
+
+.Navigation-items a:hover,
+.Navigation-items a.active {
+    color: indianred;
+}
+
+.Navigation-items a {
+    text-decoration: none;
+    color: initial;
+}
