@@ -1,0 +1,24 @@
+@import '../../../assets/styles/mediaQueries';
+.ContactData {
+    margin: 20px auto;
+    width: 80%;
+    text-align: center;
+    box-shadow: 1 2px 3px #ccc;
+    border: 1px solid #eee;
+    padding: 10px;
+    box-sizing: border-box;
+    @include respond-to(modal) {
+        width: 500px;
+    }
+    input {
+        display: flex;
+        width: 100%;
+        margin: 10px auto;
+        box-sizing: border-box;
+        height: 2rem;
+        border: 1px solid #ccc;
+        border-radius: 2px;
+        box-shadow: 0 2px 2px #eee;
+        padding: 0 10px;
+    }
+}
