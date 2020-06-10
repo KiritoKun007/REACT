@@ -1,0 +1,13 @@
+@import '../../../assets/styles/mediaQueries';
+.CheckoutSummary {
+    text-align: center;
+    margin: 80%;
+    margin: auto;
+    @include respond-to(modal) {
+        width: 500px;
+    }
+}
+
+.burger-preview {
+    margin: auto;
+}

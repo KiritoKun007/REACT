@@ -1,0 +1,102 @@
+@import '../../../assets/styles/colors';
+$ingredient-margin: 2% auto;
+// Common CSS
+%common-bread {
+    box-shadow: inset -15px 0 $bread-boxShadow;
+    margin: 2% auto;
+    width: 80%;
+}
+
+%common-seed {
+    width: 10%;
+    height: 15%;
+    position: absolute;
+    background-color: $white;
+    top: 50%;
+    border-radius: 40%;
+}
+
+%seed-after-before {
+    content: "";
+    width: 100%;
+    height: 100%;
+}
+
+.BreadBottom {
+    @extend %common-bread;
+    height: 13%;
+    background: $bread-b-bg;
+    border-radius: 0 0 30px 30px;
+}
+
+.BreadTop {
+    @extend %common-bread;
+    height: 20%;
+    background: $bread-t-bg;
+    border-radius: 60% 60% 0 0;
+    position: relative;
+}
+
+.Seeds1 {
+    @extend %common-seed;
+    left: 30%;
+    transform: rotate(-20deg);
+    box-shadow: inset -2px -3px $seed-boxShadow;
+    &:after {
+        @extend %seed-after-before;
+        left: -170%;
+        top: -260%;
+        transform: rotate(60deg);
+    }
+    &:before {
+        @extend %seed-after-before;
+        left: 180%;
+        top: -50%;
+        transform: rotate(60deg);
+    }
+}
+
+.Seeds2 {
+    @extend %common-seed;
+    left: 64%;
+    transform: rotate(10deg);
+    box-shadow: inset -3px 0 $seed-boxShadow;
+    &:before {
+        @extend %seed-after-before;
+        left: 150%;
+        top: -130%;
+        transform: rotate(90deg);
+        box-shadow: inset 1px 3px $seed-boxShadow;
+    }
+}
+
+.Meat {
+    width: 80%;
+    height: 8%;
+    background: $meat-bg;
+    margin: $ingredient-margin;
+    border-radius: 15px;
+}
+
+.Cheese {
+    width: 90%;
+    height: 4.5%;
+    margin: $ingredient-margin;
+    background: $cheese-bg;
+    border-radius: 20px;
+}
+
+.Salad {
+    width: 85%;
+    height: 7%;
+    margin: $ingredient-margin;
+    background: $salad-bg;
+    border-radius: 20px;
+}
+
+.Bacon {
+    width: 80%;
+    height: 3%;
+    background: $bacon-bg;
+    margin: $ingredient-margin;
+}
