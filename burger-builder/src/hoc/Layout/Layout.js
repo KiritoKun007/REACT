@@ -18,7 +18,7 @@ class Layout extends Component {
     render() {
         return (
             <Fragment>
-                <SideDrawer 
+                <SideDrawer
                     show={this.state.showSideDrawer}
                     closeSideDrawer={this.sideDrawerToggleHandler} />
                 <Toolbar
@@ -29,6 +29,6 @@ class Layout extends Component {
             </Fragment>
         )
     }
-} 
+}
 
 export default Layout

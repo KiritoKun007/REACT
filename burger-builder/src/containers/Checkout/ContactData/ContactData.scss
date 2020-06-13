@@ -10,15 +10,4 @@
     @include respond-to(modal) {
         width: 500px;
     }
-    input {
-        display: flex;
-        width: 100%;
-        margin: 10px auto;
-        box-sizing: border-box;
-        height: 2rem;
-        border: 1px solid #ccc;
-        border-radius: 2px;
-        box-shadow: 0 2px 2px #eee;
-        padding: 0 10px;
-    }
 }
